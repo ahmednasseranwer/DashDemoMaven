@@ -1,0 +1,8 @@
+com\SeedWork\Enums.class
+com\Persons\Person.class
+com\Persons\Persons.class
+com\PersonsOpertions\PersonJsonFile.class
+com\PersonsOpertions\PersonCSVFile.class
+com\PersonsOpertions\PersonsOpertions.class
+com\Main\MainTask.class
+com\SeedWork\Enums$Type.class
