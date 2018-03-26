@@ -1,13 +1,16 @@
-# DashDemo
+# DashDemoMaven
 
 A CRUD command line tool to store, sort and filter data about users in JSON, or CSV files.
+test sequence scenario in ProposedTest.docx using Junit and Maven project management
 
 ## Installation and Set Up
 
 Prerequisites:
 
-* Eclipse IDE
-* jdk 
+* Eclipse IDE 
+* jdk 8 or 10
+* junit
+* Maven
  
 Install required packages to project libraries
 ```
@@ -16,15 +19,17 @@ jackson.all-1.9.0
 opencsv-4.0.jar
 commons-csv-1.1.jar
 gson-2.2.2.jar
+junit-4.10.jar
 ```
-All this packages on Folder DashDemo/jar or can clone it  
+All this packages on Folder DashDemoMaven/jar or can clone it  
 ```
-git clone https://github.com/ahmednasseranwer/DashDemo/tree/master/jar
+git clone https://github.com/ahmednasseranwer/DashDemoMaven/tree/master/src/lib
 ```
 
-## Running the tests
+## Running Program 
 
-In "ProposedTests.docx", Check table #1 that help to run program
+* Run "com/main/Main/MainTask.java" in "src/main/java"
+* In "ProposedTests.docx", Check table #1 that help to run program
 
 ### Select File Type :
 ```
@@ -33,6 +38,7 @@ Select File Type:
 2-CSV	 
 => 1
 ```
+
 ### Select Opertion AddPerson
 ```
 Select your Choice 
@@ -57,8 +63,11 @@ Enter Person's Mail:
 ahmednasser@gmail
 New Person is added with name Ahmed Nasser to JsonFile
 ```
-### coding style tests
-In "ProposedTests.docx", Check table #2 that help to test program
+
+## Running the tests manually
+
+* Run "com/main/Main/MainTask.java" in "src/main/java" 
+* Test program manually according to all testcases  in table#2 of "ProposedTests.docx" 
 
 ### Select Opertion List All Persons 
 ```
@@ -75,6 +84,10 @@ File is Empty
 ```
 
 
-## Authors 
+## Running the tests Using Junit Testing 
+
+* Run "JunitTestSuite.java" that calls ["TestJson.java","TestCSV.java"] contains all sequence scenarios testcases that Prepared in in table#2 of "ProposedTests.docx"
+* Before run "JunitTestSuite.java" check "CSVFile.csv" and "JsonFile.json" is empty
+* See output in Junit and Console 
 
 **Ahmed Nasser**
