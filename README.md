@@ -83,11 +83,11 @@ File is Empty
 File is Empty
 ```
 
-
 ## Running the tests Using Junit Testing 
 
-* Run "JunitTestSuite.java" that calls ["TestJson.java","TestCSV.java"] contains all sequence scenarios testcases that Prepared in in table#2 of "ProposedTests.docx"
+* Run "JunitTestSuite.java" that calls ["TestJson.java","TestCSV.java"] contains all sequence scenarios testcases that Prepared in table#2 of "ProposedTests.docx"
 * Before run "JunitTestSuite.java" check "CSVFile.csv" and "JsonFile.json" is empty
-* See output in Junit and Console 
-
+* See output in Junit and Console
+ 
+## Authors 
 **Ahmed Nasser**
