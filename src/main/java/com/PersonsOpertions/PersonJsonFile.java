@@ -26,8 +26,7 @@ public class PersonJsonFile extends PersonsOpertions {
 
 	public PersonJsonFile() 
 	{
-		super();
-		Person.setTypeFile("JsonFile");
+		super("JsonFile");
 	}
 	
 	@Override
@@ -72,7 +71,7 @@ public class PersonJsonFile extends PersonsOpertions {
 		    //Check listofPersons Empty 
 			if(listOfPersons.isEmpty())
 			{
-				System.out.println("\nNot found value of "+filterValue + " in Field "+filterField +",List of Persons not have any Person \n");
+				System.out.println("Not found value of "+filterValue + " in Field "+filterField +",List of Persons not have any Person \n");
 			     return null;
 			}
 			
@@ -91,7 +90,7 @@ public class PersonJsonFile extends PersonsOpertions {
 			}
 			if(CustomPersons.persons.isEmpty())
 			{
-				System.out.println("\nNot found value of "+filterValue + " in Field "+filterField + "\n");
+				System.out.println("Not found value of "+filterValue + " in Field "+filterField + "\n");
 				return null;
 			}
 			System.out.println();
@@ -102,7 +101,7 @@ public class PersonJsonFile extends PersonsOpertions {
 		}
 	else
 	  {
-		System.out.println("\nNot found value of "+filterValue + " in Field "+filterField+",File is Empty \n");
+		System.out.println("Not found value of "+filterValue + " in Field "+filterField+",File is Empty \n");
 		return null;
       }
 	return  CustomPersons.persons;

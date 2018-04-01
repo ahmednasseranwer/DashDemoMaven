@@ -10,9 +10,8 @@ public class Person implements Comparable<Person>  {
     public String phone;
     public String age;
     public String mail;
-
+    
 	public static String sortBy;
-	public static String fileType;
 
     public String getFirstName() {
 		return firstName;
@@ -68,14 +67,6 @@ public class Person implements Comparable<Person>  {
 
 	public static void setSortBy(String sortBy) {
 		Person.sortBy = sortBy;
-	}
-
-	public static String getFileType() {
-		return fileType;
-	}
-
-	public static void setTypeFile(String fileType) {
-		Person.fileType = fileType;
 	}
 	
 	public Person(){}

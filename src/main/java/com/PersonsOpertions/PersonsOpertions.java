@@ -35,7 +35,23 @@ import com.opencsv.bean.StatefulBeanToCsv;
 import com.opencsv.bean.StatefulBeanToCsvBuilder;
 public abstract class PersonsOpertions {
 
-	public PersonsOpertions(){}
+
+	public PersonsOpertions(String fileType)
+	{
+		this.fileType = fileType;
+	}
+
+	public String fileType;
+	
+	public String getFileType() 
+	{
+		return fileType;
+	}
+
+	public void setFileType(String fileType) 
+	{
+		this.fileType = fileType;
+	}
 
 	public Person AddPerson(Person newPerson) throws JsonParseException, JsonMappingException, IOException
 	{
@@ -48,7 +64,7 @@ public abstract class PersonsOpertions {
 			Persons listOfPersons = new Persons();		
 			listOfPersons.persons.add(newPerson);
 			WriteFile(listOfPersons);
-			System.out.println(" \nNew Person is added with name "+ newPerson.getFirstName()+ " "+newPerson.getLastName()+ " to " + Person.getFileType() +"\n");
+			System.out.println("New Person is added with name "+ newPerson.getFirstName()+ " "+newPerson.getLastName()+ " to " + getFileType() +"\n");
 			// for testing
 			outputPerson = newPerson;
 		}
@@ -66,7 +82,7 @@ public abstract class PersonsOpertions {
 			}
 			if(!foundIt)	
 			{	
-				System.out.println(" \nNew Person is added with name "+ newPerson.getFirstName()+ " "+newPerson.getLastName()+ " to " + Person.getFileType() +"\n");
+				System.out.println("New Person is added with name "+ newPerson.getFirstName()+ " "+newPerson.getLastName()+ " to " + getFileType() +"\n");
 				listOfPersons.persons.add(newPerson);
 				WriteFile(listOfPersons);
 				// for testing
@@ -74,7 +90,7 @@ public abstract class PersonsOpertions {
 			}
 			else
 			{
-				System.out.println("\nPerson Exists, Another Person is founded with Same Email or Phone Number \n");
+				System.out.println("Person Exists, Another Person is founded with Same Email or Phone Number \n");
 			}
 		}
 		return outputPerson;
@@ -95,13 +111,13 @@ public abstract class PersonsOpertions {
 				{
 					// Check contains any Person Returns, if File not Empty but have Header only
 					// Like "CSVFile.json" contains only one row "firstName,lastName,title,phone,age,mail"
-					if(listOfPersons.persons.get(i).getFileType().equals("CSVFile") && listOfPersons.persons.size()==1)
+					if(getFileType().equals("CSVFile") && listOfPersons.persons.size()==1)
 					{
-						System.out.println("\nList Of Persons not have any Person \n ");
+						System.out.println("List Of Persons not have any Person \n ");
 						return null;
 					}
 				    // Ignore First Row in "CSVFile.csv" "firstName,lastName,title,phone,age,mail"
-					else if(i==0 && listOfPersons.persons.get(i).getFileType().equals("CSVFile"))
+					else if(i==0 && getFileType().equals("CSVFile"))
 						continue;
 					
 					listOfPersons.persons.get(i).PersonDetails();
@@ -109,16 +125,16 @@ public abstract class PersonsOpertions {
 			}
 			else 
 			{
-				System.out.println(" \nList of Persons not have any Person\n");
+				System.out.println("List of Persons not have any Person\n");
 				return null;
 			}
 		}	
 		else 
 		{
-				System.out.println("\nFile is Empty \n");
+				System.out.println("File is Empty \n");
 				return null;
 		}
-		if(listOfPersons.persons.get(0).getFileType().equals("CSVFile"))
+		if(getFileType().equals("CSVFile"))
 				return listOfPersons.persons.subList(1, listOfPersons.persons.size());
 		
 		return listOfPersons.persons;
@@ -141,37 +157,37 @@ public abstract class PersonsOpertions {
 				{		
 					// Check contains any Person Returns, if File not Empty but have Header only
 					// Like "CSVFile.json" contains only one row "firstName,lastName,title,phone,age,mail"
-					if(listOfPersons.persons.get(i).getFileType().equals("CSVFile") && listOfPersons.persons.size()==1)
+					if(getFileType().equals("CSVFile") && listOfPersons.persons.size()==1)
 					{	
-						System.out.println("\nNot Found Person with this Mail, List Of Persons not have any Person \n ");
+						System.out.println("Not Found Person with this Mail, List Of Persons not have any Person \n ");
 					}
 				    // Ignore Check First Row in "CSVFile.csv"  "firstName,lastName,title,phone,age,mail"
-					else if(i==0 && listOfPersons.persons.get(i).getFileType().equals("CSVFile"))
+					else if(i==0 && getFileType().equals("CSVFile"))
 						continue;
 				
 					// Check Selected Mail to Delete
 					else if(listOfPersons.persons.get(i).getMail().equals(selectedMail) )
 					{	
-						System.out.println("\n Person Name : "+ listOfPersons.persons.get(i).getFirstName()+ " "+ listOfPersons.persons.get(i).getLastName() + " with Mail : " +listOfPersons.persons.get(i).getMail() +" is Deleted \n");
+						System.out.println("Person Name : "+ listOfPersons.persons.get(i).getFirstName()+ " "+ listOfPersons.persons.get(i).getLastName() + " with Mail : " +listOfPersons.persons.get(i).getMail() +" is Deleted \n");
 						outputPersonMail = listOfPersons.persons.get(i).getMail();
 						listOfPersons.persons.remove(i);
 					}
 					// Not Found Person with this Mail
 					else if(i==listOfPersons.persons.size()-1)
 					{
-						System.out.println("\nNot Found Person with this Mail \n");	
+						System.out.println("Not Found Person with this Mail \n");	
 					}
 				}
 				WriteFile(listOfPersons);
 			}
 			else 
 			{
-				System.out.println(" \nNot Found Person with this Mail, List of Persons not have any Person\n");
+				System.out.println("Not Found Person with this Mail, List of Persons not have any Person\n");
 			}
 		}	
 		else 
 		{
-				System.out.println("\nNot Found Person with this Mail , File is Empty \n");
+				System.out.println("Not Found Person with this Mail , File is Empty \n");
 		}
 		return outputPersonMail;
 	}
@@ -193,12 +209,12 @@ public abstract class PersonsOpertions {
 				{		
 			    	// Check contains any Person Returns, if File not Empty but have Header only
 					// Like "CSVFile.json" contains only one row "firstName,lastName,title,phone,age,mail"
-					if(listOfPersons.persons.get(i).getFileType().equals("CSVFile") && listOfPersons.persons.size()==1)
+					if(getFileType().equals("CSVFile") && listOfPersons.persons.size()==1)
 					{
-						System.out.println("\nNot Found Person with this Mail, List Of Persons not have any Person \n ");
+						System.out.println("Not Found Person with this Mail, List Of Persons not have any Person \n ");
 					}
 					// Ignore First Row in checking "CSVFile.csv" "firstName,lastName,title,phone,age,mail"
-					else if(i==0 && listOfPersons.persons.get(i).getFileType().equals("CSVFile"))
+					else if(i==0 && getFileType().equals("CSVFile"))
 						continue;
 	
 					else if(listOfPersons.persons.get(i).getMail().equals(selectedMail) )
@@ -211,25 +227,25 @@ public abstract class PersonsOpertions {
 						listOfPersons.persons.get(i).setTitle(updatedPerson.getTitle());
 						// here set output 
 						outputPerson = updatedPerson;
-						System.out.println("\nPerson Details is Updated\n");
+						System.out.println("Person Details is Updated\n");
 						break;
 					}
 					// Not Found Person with this Mail
 					else if(i == listOfPersons.persons.size()-1)
 					{
-						System.out.println("\nNot Found Person with this Mail \n");	
+						System.out.println("Not Found Person with this Mail \n");	
 					}
 				}
 					WriteFile(listOfPersons);
 			}
 			else 
 			{
-				System.out.println(" \nNot Found Person with this Mail, List of Persons not have any Person\n");
+				System.out.println("Not Found Person with this Mail, List of Persons not have any Person\n");
 			}
 		}	
 		else 
 		{
-				System.out.println("\nNot Found Person with this Mail, File is Empty \n");
+				System.out.println("Not Found Person with this Mail, File is Empty \n");
 		}
 		return outputPerson;	
 	}
@@ -255,12 +271,12 @@ public abstract class PersonsOpertions {
 					listOfPersons.persons.get(i).setSortBy(selectedField);
 				}
 				//Sort all rows in "JsonFile.json"
-				if(Person.getFileType().equals("JsonFile")) 
+				if(getFileType().equals("JsonFile")) 
 				{
 					Collections.sort(listOfPersons.persons);
 				}
 					//Sort all rows in "CSVFile.csv" except header row "firstName,lastName,title,phone,age,mail"
-				else if(Person.getFileType().equals("CSVFile"))
+				else if(getFileType().equals("CSVFile"))
 				{
 					Collections.sort(listOfPersons.persons.subList(1, listOfPersons.persons.size()));
 				}	
@@ -269,18 +285,18 @@ public abstract class PersonsOpertions {
 			}
 			else 
 			{
-				System.out.println(" \nList of Persons not have any Person\n");
+				System.out.println("List of Persons not have any Person\n");
 				return null;
 			}
 		}	
 		else 
 		{
-				System.out.println("\nFile is Empty \n");
+				System.out.println("File is Empty \n");
 				return null;
 		}	
-		if(listOfPersons.persons.get(0).getFileType().equals("CSVFile") && listOfPersons.persons.size() > 1)
+		if(getFileType().equals("CSVFile") && listOfPersons.persons.size() > 1)
 			return listOfPersons.persons.subList(1, listOfPersons.persons.size());
-		else if(listOfPersons.persons.get(0).getFileType().equals("CSVFile") && listOfPersons.persons.size() == 1)
+		else if(getFileType().equals("CSVFile") && listOfPersons.persons.size() == 1)
 			return null;
 		return listOfPersons.persons;
 

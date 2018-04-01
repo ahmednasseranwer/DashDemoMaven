@@ -27,8 +27,7 @@ public class PersonCSVFile extends PersonsOpertions {
 
 	public PersonCSVFile() 
 	{
-		super();
-		Person.setTypeFile("CSVFile");
+		super("CSVFile");
 	}
 	@Override
 	protected Persons ReadFile() throws IOException 
@@ -75,7 +74,7 @@ public class PersonCSVFile extends PersonsOpertions {
 	{	
 		if(!Enums.Type.checkType(filterField))
 		{
-			System.out.println("\nNot have Field with this Name \n");
+			System.out.println("Not have Field with this Name \n");
 			return null;
 		}
 		BufferedReader	br = new BufferedReader(new FileReader("CSVFile.csv"));  
@@ -100,7 +99,7 @@ public class PersonCSVFile extends PersonsOpertions {
 			}
 			if(CustomPersons.persons.size()==0)
 			{
-				System.out.println("\nNot found value of "+filterValue+" in Field "+filterField+" \n");
+				System.out.println("Not found value of "+filterValue+" in Field "+filterField+" \n");
 				return null;
 			}
 
@@ -111,7 +110,7 @@ public class PersonCSVFile extends PersonsOpertions {
 		}
 		else 
 		{
-			System.out.println("\nNot found value of "+filterValue+" in Field "+filterField+",File is Empty \n");
+			System.out.println("Not found value of "+filterValue+" in Field "+filterField+",File is Empty \n");
 			return null;
 		}
 		return CustomPersons.persons;
